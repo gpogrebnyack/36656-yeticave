@@ -4,19 +4,14 @@ $is_auth = (bool) rand(0, 1);
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';
 
-
 function clear_price($price) {
     $price = ceil($price);
-    $str_price = (string)$price;
-    if ($str_price < 1000) {
-        print($str_price . " ₽");
+    if ($price <= 999) {
     } else {
-        $long_price = number_format($str_price, 0, '', ' ');
-        print($long_price . " ₽");
+        $price = number_format($price, 0, '', ' ');
     }
-    return $amount;
+    return $price;
 }
-
 
 $cat = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
 $lots = [
