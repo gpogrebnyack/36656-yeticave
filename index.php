@@ -6,11 +6,10 @@ $user_avatar = 'img/user.jpg';
 
 function clear_price($price) {
     $price = ceil($price);
-    if ($price <= 999) {
-    } else {
+    if ($price >= 1000) {
         $price = number_format($price, 0, '', ' ');
     }
-    return $price;
+    return $price . " ₽" ;
 }
 
 $cat = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
