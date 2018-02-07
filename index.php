@@ -4,6 +4,14 @@ $is_auth = (bool) rand(0, 1);
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';
 
+function clear_price($price) {
+    $price = ceil($price);
+    if ($price >= 1000) {
+        $price = number_format($price, 0, '', ' ');
+    }
+    return $price . " ₽" ;
+}
+
 $cat = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
 $lots = [
     [
@@ -131,7 +139,7 @@ $lots = [
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?=$val['price'];?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?=clear_price ($val['price']);?></span>
                         </div>
                         <div class="lot__timer timer">
 
