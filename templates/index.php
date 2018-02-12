@@ -41,18 +41,10 @@
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?=clear_price($val['price']);?></span>
+                            <span class="lot__cost"><?=htmlspecialchars(clear_price($val['price']));?></span>
                         </div>
                         <div class="lot__timer timer">
-                            <?php
-                            date_default_timezone_set("Europe/Moscow");
-                            $curtime = time();
-                            $time_midnight = strtotime('tomorrow');
-                            $exptime = $time_midnight - $curtime;
-                            $hours = floor($exptime / 3600);
-                            $minutes = floor(($exptime % 3600) / 60);
-                            print($hours . ":" . $minutes);
-                            ?>
+                            
                         </div>
                     </div>
                 </div>
