@@ -40,7 +40,7 @@ $lots = [
     ]
 ];
 
-require_once ('function.php');
+require_once ('functions.php');
 
 $page_content = render('templates/index.php', ['lots' => $lots]);
 $layout_content = render('templates/layout.php', [

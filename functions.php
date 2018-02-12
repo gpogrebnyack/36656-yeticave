@@ -6,9 +6,8 @@
             extract($data);
             require_once($path);
             return ob_get_clean();
-        } else {
-            return null;
-        }
+        } 
+        return '';
     }
 
     function clear_price($price) {
@@ -16,7 +15,7 @@
         if ($price >= 1000) {
             $price = number_format($price, 0, '', ' ');
         }
-        return htmlspecialchars($price . " ₽" );
+        return $price . " ₽";
     }
 
 ?>
