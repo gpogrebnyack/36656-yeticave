@@ -44,14 +44,7 @@
                             <span class="lot__cost"><?=htmlspecialchars(clear_price($val['price']));?></span>
                         </div>
                         <div class="lot__timer timer">
-                        <?php
-                            date_default_timezone_set("Europe/Moscow");
-                            $time_midnight = strtotime('tomorrow');
-                            $exptime = $time_midnight - time();
-                            $hours = floor($exptime / 3600);
-                            $minutes = floor(($exptime % 3600) / 60);
-                            print($hours . ":" . str_pad($minutes, 2, "0", STR_PAD_LEFT));
-                        ?>
+                            <?=$time_left;?>
                         </div>
                     </div>
                 </div>

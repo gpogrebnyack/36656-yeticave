@@ -3,6 +3,7 @@ $is_auth = (bool) rand(0, 1);
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';
 
+
 $cat = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
 $lots = [
     [
@@ -44,8 +45,11 @@ $lots = [
 ];
 
 require_once ('functions.php');
+$time_left = time_left();
 
-$page_content = render('templates/index.php', ['lots' => $lots]);
+$page_content = render('templates/index.php', [
+    'lots' => $lots,
+    'time-left' => $time_left]);
 $layout_content = render('templates/layout.php', [
     'title' => 'Главная',
     'is_auth' => $is_auth, 
