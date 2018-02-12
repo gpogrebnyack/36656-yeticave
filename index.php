@@ -45,15 +45,18 @@ $lots = [
 
 require_once ('functions.php');
 
-$page_content = render('templates/index.php', ['lots' => $lots]);
+$page_content = render('templates/index.php', [
+    'lots' => $lots,
+    'time_left' => time_left()
+    ]);
 $layout_content = render('templates/layout.php', [
     'title' => 'Главная',
     'is_auth' => $is_auth, 
     'user_name' => $user_name, 
     'user_avatar' => $user_avatar,
     'content' => $page_content,
-    'cat' => $cat]);
+    'cat' => $cat
+    ]);
 
 print($layout_content);
-
 ?>
