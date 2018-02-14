@@ -2,6 +2,8 @@
 
 require_once ('functions.php');
 require_once ('lots-data.php');
+require_once ('lots-login.php');
+require_once ('lots-cat.php');
 
 $page_content = render('templates/index.php', [
     'lots' => $lots,

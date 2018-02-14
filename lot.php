@@ -1,6 +1,8 @@
 <?php
 require_once ('functions.php');
 require_once ('lots-data.php');
+require_once ('lots-login.php');
+require_once ('lots-cat.php');
 
 $lot = null;
 
@@ -20,7 +22,7 @@ if (!$lot) {
 }
 
 $page_content = render('templates/lot.php', [
-    'lots' => $lot,
+    'lot' => $lot,
     ]);
 
 $layout_content = render('templates/layout.php', [
