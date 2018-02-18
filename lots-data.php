@@ -1,5 +1,5 @@
 <?php
-require_once ('cats-data.php');
+require_once 'cats-data.php';
 
 $lots = [
     [
