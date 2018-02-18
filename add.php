@@ -1,14 +1,14 @@
 <?php
 
-require_once ('functions.php');
-require_once ('lots-data.php');
-require_once ('cats-data.php');
-require_once ('login-data.php');
+require_once 'functions.php';
+require_once 'lots-data.php';
+require_once 'cats-data.php';
+require_once 'login-data.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $lot = $_POST;
 
-    // Обязательные поля
+    // Проверка на обязательные поля
     $required = ['name', 'category', 'message', 'price', 'lot-step', 'lot-date'];
     $errors = [];
     foreach ($required as $key) {
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // Изображение
+    // Проверка изображения
     if (!isset($_FILES['img'])) {
         $errors['img'] = true;
     }

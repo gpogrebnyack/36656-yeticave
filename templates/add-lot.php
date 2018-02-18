@@ -21,11 +21,11 @@
     </ul>
   </nav>
 
-  <form class="form form--add-lot container" action="add.php" method="post" enctype="multipart/form-data"> <!-- form--invalid -->
+  <form class="form form--add-lot container" action="add.php" method="post" enctype="multipart/form-data"> 
     <h2>Добавление лота</h2>
     <div class="form__container-two">
       
-      <div class="form__item <?=isset($errors['name']) ? "form__item--invalid" : "";?>"> <!-- form__item--invalid -->
+      <div class="form__item <?=isset($errors['name']) ? "form__item--invalid" : "";?>"> 
         <label for="lot-name">Наименование</label>
         <input id="lot-name" type="text" name="name" placeholder="Введите наименование лота" value="<?=isset($lot['name']) ? $lot['name'] : "";?>">
         <?php if (isset($errors['name'])): ?>
@@ -57,7 +57,7 @@
         <?php endif; ?>
     </div>
     
-    <div class="form__item form__item--file"> <!-- form__item--uploaded -->
+    <div class="form__item form__item--file"> 
       <label>Изображение</label>
       <?php if (isset($lot['img'])): ?>
       <div class="preview" style="display: block; position: relative;">
