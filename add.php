@@ -18,10 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Проверка изображения
-    if (!isset($_FILES['img'])) {
-        $errors['img'] = true;
-    }
-    if ($_FILES['img']['error'] == 4) {
+    if (!isset($_FILES['img']) or  $_FILES['img']['error'] == 4) {
         $errors['img'] = true;
     }
 

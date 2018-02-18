@@ -21,7 +21,7 @@
     </ul>
   </nav>
 
-  <form class="form form--add-lot container" action="add.php" method="post" enctype="multipart/form-data"> 
+  <form class="form form--add-lot container <?=isset($errors) ? "form--invalid" : "";?>" action="add.php" method="post" enctype="multipart/form-data"> 
     <h2>Добавление лота</h2>
     <div class="form__container-two">
       
@@ -33,14 +33,12 @@
         <?php endif; ?>
       </div>
 
-      <?php $value = isset($lot['category']) ? $lot['category'] : "";?>
       <div class="form__item <?=isset($errors['category']) ? "form__item--invalid" : "";?>">
         <label for="category">Категория</label>
         <select id="category" name="category">
             <option selected value="">Выберите категорию</option>
             <?php foreach ($cat as $category): ?>
-                <?php $selected = ($category == $value) ? "selected" : ""?>
-                <option <?=$selected;?> value="<?=$category;?>"><?=$category;?></option>
+            <option <?= (isset($lot['category']) && $category == $lot['category']) ? 'selected' : '';?> value="<?=$category;?>"><?=$category;?></option>
             <?php endforeach; ?>  
         </select>
         <?php if (isset($errors['category'])): ?>
