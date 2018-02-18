@@ -17,6 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
+    // Изображение
+    if (!isset($_FILES['img'])) {
+        $errors['img'] = true;
+    }
     if ($_FILES['img']['error'] == 4) {
         $errors['img'] = true;
     }
@@ -30,16 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     } else {
 		$errors['img'] = true;
-    }
-
-    // // Изображение
-    // if (isset($_FILES['img']['name'])) {
-    //     if (isset($path)) {
-    //         $path = move_uploaded_file($_FILES['img']['tmp_name'], 'img/' . $_FILES['img']['name']);
-    //         $lot['img'] = $path;
-    //     }     
-    // }
-    
+    }  
 
     // Проверка на ожидаемый формат
     if (!filter_var($lot['price'], FILTER_VALIDATE_FLOAT)) {
@@ -75,6 +70,6 @@ $layout_content = render('templates/layout.php', [
     'user_avatar' => $user_avatar,
     'content' => $page_content,
     'cat' => $cat
-    ]);
+]);
 
 print($layout_content);
