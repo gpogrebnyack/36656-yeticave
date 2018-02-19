@@ -49,7 +49,7 @@
    
     <div class="form__item form__item--wide <?=isset($errors['message']) ? "form__item--invalid" : "";?>">
         <label for="message">Описание</label>
-        <textarea id="message" name="message" placeholder="Напишите описание лота" ><?=isset($lot['message']) ? $lot['message'] : "";?></textarea>
+        <textarea id="message" name="message" placeholder="Напишите описание лота"><?=isset($lot['message']) ? $lot['message'] : "";?></textarea>
         <?php if (isset($errors['message'])): ?>
             <span class="form__error">Напишите описание лота</span>
         <?php endif; ?>
@@ -57,21 +57,24 @@
     
     <div class="form__item form__item--file"> 
       <label>Изображение</label>
-      <?php if (isset($lot['img'])): ?>
+      <?php if (isset($lot['img']) and !isset($errors['img'])): ?>
       <div class="preview" style="display: block; position: relative;">
         <button class="preview__remove" type="button">x</button>
         <div class="preview__img">
           <img src="<?="img/" . $lot['img'];?>" width="113" height="113" alt="Изображение лота">
         </div>
+        <input class="visually-hidden" type="file" id="photo2" name="img">
       </div>
       <?php endif; ?>
-      <?php if (isset($errors['img'])): ?>
+      <?php if (isset($errors['img']) or empty($_FILES)): ?>
       <div class="form__input-file">
-        <input class="visually-hidden" type="file" id="photo2" name="img" value="">
+        <input class="visually-hidden" type="file" id="photo2" name="img">
         <label for="photo2">
           <span>+ Добавить</span>
         </label>
       </div>
+      <?php endif; ?>
+      <?php if (isset($errors['img'])): ?>
           <span class="form__error" style="display: block;">Вы не загрузили файл</span>
        <?php endif; ?>
     </div>
@@ -107,6 +110,3 @@
     <?php endif; ?>
     <button type="submit" class="button">Добавить лот</button>
   </form>
-
-  <?php
-  ?>
