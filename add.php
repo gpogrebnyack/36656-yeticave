@@ -26,9 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$img_url = $_FILES['img']['name'];
 		move_uploaded_file($_FILES['img']['tmp_name'], 'img/' . $img_url);
 
-    if (isset($img_url)) {
-        $lot['img'] = $img_url;
-    }
+        if (isset($img_url)) {
+            $lot['img'] = $img_url;
+        }
     } else {
 		$errors['img'] = true;
     }  
