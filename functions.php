@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("Europe/Moscow");
 
     function render($path, $data = array()) {
         if (file_exists($path)) {
@@ -18,19 +19,16 @@
         return $price . " ₽";
     }
 
-    function time_left() {
-        date_default_timezone_set("Europe/Moscow");
+    function time_left() { 
         $exptime = strtotime('tomorrow') - time();
         $hours = floor($exptime / 3600);
         $minutes = floor(($exptime % 3600) / 60);
         return $hours . ":" . str_pad($minutes, 2, "0", STR_PAD_LEFT);
     }
 
-    function lot_time_left($value) {
-        date_default_timezone_set("Europe/Moscow");
-        $time = date("23:59");  
-        $value = $value . $time;
-        $exptime = strtotime($value) - time();
+    function lot_time_left($value) {  
+        $lotDate = $value . date("23:59");
+        $exptime = strtotime($lotDate) - time();
         $hours = floor($exptime / 3600);
         $minutes = floor(($exptime % 3600) / 60);
         $secs = $exptime - $hours * 3600 -  $minutes * 60;
