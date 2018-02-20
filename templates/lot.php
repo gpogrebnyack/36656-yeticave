@@ -30,12 +30,12 @@
           <img src="<?="img/" . $lot['img'];?>" width="730" height="548" alt="<?=$lot['name'];?>">
         </div>
         <p class="lot-item__category">Категория: <span><?=$lot['category'];?></span></p>
-        <p class="lot-item__description"><?=htmlspecialchars($lot['message']);?></p>
+        <p class="lot-item__description"><?=isset($lot['message']) ? htmlspecialchars($lot['message']) : 'Отсутствует описание лота'; ?></p>
       </div>
       <div class="lot-item__right">
         <div class="lot-item__state">
           <div class="lot-item__timer timer">
-            <?=lot_time_left($lot['lot-date']);?>
+            <?=isset($lot['lot-date']) ? lot_time_left($lot['lot-date']) : time_left(); ?>
           </div>
           <div class="lot-item__cost-state">
             <div class="lot-item__rate">

@@ -36,9 +36,9 @@
       <div class="form__item <?=isset($errors['category']) ? "form__item--invalid" : "";?>">
         <label for="category">Категория</label>
         <select id="category" name="category">
-            <option selected value="">Выберите категорию</option>
+            <option <?=(!isset($lot['category'])) ? 'selected' : '';?> value="">Выберите категорию</option>
             <?php foreach ($cat as $category): ?>
-            <option <?= (isset($lot['category']) && $category == $lot['category']) ? 'selected' : '';?> value="<?=$category;?>"><?=$category;?></option>
+            <option <?=(isset($lot['category']) && $category == $lot['category']) ? 'selected' : '';?> value="<?=$category;?>"><?=$category;?></option>
             <?php endforeach; ?>  
         </select>
         <?php if (isset($errors['category'])): ?>
