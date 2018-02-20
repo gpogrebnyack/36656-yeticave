@@ -33,7 +33,7 @@
         <?php foreach ($lots as $key => $val): ?>
             <li class="lots__item lot">
                 <div class="lot__image">
-                    <img src="<?=$val['img'];?>" width="350" height="260" alt="Сноуборд">
+                    <img src="<?="img/" . $val['img'];?>" width="350" height="260" alt="Сноуборд">
                 </div>
                 <div class="lot__info">
                     <span class="lot__category"><?=htmlspecialchars($val['category']);?></span>
