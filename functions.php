@@ -26,8 +26,8 @@ date_default_timezone_set("Europe/Moscow");
         return $hours . ":" . str_pad($minutes, 2, "0", STR_PAD_LEFT);
     }
 
-    function lot_time_left($value) {  
-        $lotDate = $value . date("23:59");
+    function lot_time_left($lotDate) {  
+        $lotDate = $lotDate . date("23:59");
         $exptime = strtotime($lotDate) - time();
         $hours = floor($exptime / 3600);
         $minutes = floor(($exptime % 3600) / 60);
