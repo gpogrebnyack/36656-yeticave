@@ -13,7 +13,7 @@ if (isset($_COOKIE['visitedLot'])) {
 
     $page_content = render('templates/history.php', [
         'lots' => $lotsVisited
-        ]);
+    ]);
         
     $layout_content = render('templates/layout.php', [
         'title' => 'История просмотров',
@@ -22,7 +22,7 @@ if (isset($_COOKIE['visitedLot'])) {
         'user_avatar' => $user_avatar,
         'content' => $page_content,
         'cat' => $cat
-        ]);
+    ]);
 
     print($layout_content);
 
