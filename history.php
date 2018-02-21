@@ -5,8 +5,8 @@ require_once 'lots-data.php';
 require_once 'login-data.php';
 require_once 'cats-data.php';
 
-if (isset($_COOKIE['visitedLot'])) {
-    $visitedLots = json_decode($_COOKIE['visitedLot']);
+if (isset($_COOKIE['visitedLots'])) {
+    $visitedLots = json_decode($_COOKIE['visitedLots']);
     foreach ($visitedLots as $id){
         $lotsVisited[] = $lots[$id];
     }
