@@ -9,12 +9,27 @@ $lot = null;
 if (isset($_GET['id'])) {
     $lot_id = $_GET['id'];
 
+    //Запись посещённых лотов в куки
+    $visitedLot = array();
+    $visitedLot[] = $lot_id;
+    if (isset($_COOKIE['visitedLot'])) {
+        $visitedLot = json_decode($_COOKIE['visitedLot']);
+        if (in_array($lot_id, $visitedLot)) {
+            $visitedLot = $visitedLot;
+        } else {
+            $visitedLot[] = $lot_id;
+        }
+    }
+    setcookie('visitedLot', json_encode($visitedLot), strtotime("+30 days"), '/');
+
+    
     foreach ($lots as $key => $value) {
         if ($key == $lot_id) {
             $lot = $value;
             break;
         }
     }
+    
 }
 
 if (!$lot) {
