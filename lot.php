@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
     if (!in_array($lot_id, $visitedLots)) {
         $visitedLots[] = $lot_id;
     }
-    setcookie('visitedLot', json_encode($visitedLots), strtotime("+30 days"), '/');
+    setcookie('visitedLots', json_encode($visitedLots), strtotime("+30 days"), '/');
 
     
     foreach ($lots as $key => $value) {
