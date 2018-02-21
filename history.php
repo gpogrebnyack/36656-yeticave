@@ -6,13 +6,9 @@ require_once 'login-data.php';
 require_once 'cats-data.php';
 
 if (isset($_COOKIE['visitedLot'])) {
-    $visitedLot = json_decode($_COOKIE['visitedLot']);
-    foreach ($visitedLot as $id){
-        foreach ($lots as $key => $value) {
-            if ($key == $id) {
-                $lotsVisited[] = $value;
-            }
-        }
+    $visitedLots = json_decode($_COOKIE['visitedLot']);
+    foreach ($visitedLots as $id){
+        $lotsVisited[] = $lots[$id];
     }
 
     $page_content = render('templates/history.php', [

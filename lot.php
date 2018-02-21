@@ -10,17 +10,11 @@ if (isset($_GET['id'])) {
     $lot_id = $_GET['id'];
 
     //Запись посещённых лотов в куки
-    $visitedLot = array();
-    $visitedLot[] = $lot_id;
-    if (isset($_COOKIE['visitedLot'])) {
-        $visitedLot = json_decode($_COOKIE['visitedLot']);
-        if (in_array($lot_id, $visitedLot)) {
-            $visitedLot = $visitedLot;
-        } else {
-            $visitedLot[] = $lot_id;
+    $visitedLots = isset($_COOKIE['visitedLots']) ? json_decode($_COOKIE['visitedLots']) : [];
+        if (!in_array($lot_id, $visitedLots)) {
+            $visitedLots[] = $lot_id;
         }
-    }
-    setcookie('visitedLot', json_encode($visitedLot), strtotime("+30 days"), '/');
+    setcookie('visitedLot', json_encode($visitedLots), strtotime("+30 days"), '/');
 
     
     foreach ($lots as $key => $value) {
