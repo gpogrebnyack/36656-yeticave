@@ -35,4 +35,15 @@ date_default_timezone_set("Europe/Moscow");
         return str_pad($hours, 2, "0", STR_PAD_LEFT) . ":" . str_pad($minutes, 2, "0", STR_PAD_LEFT) . ":" . str_pad($secs, 2, "0", STR_PAD_LEFT);
     }
 
+    function searchUserByEmail($email, $users) {
+	$result = null;
+	foreach ($users as $user) {
+		if ($user['email'] == $email) {
+			$result = $user;
+			break;
+		}
+	}
+	return $result;
+}
+
 ?>
