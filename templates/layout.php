@@ -1,10 +1,3 @@
-<?php
-if(!isset($_SESSION)) {
-    session_start();
-}
-//print_r($_SESSION['user']);
-?>
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>

@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
   <nav class="nav">
     <ul class="nav__list container">
       <li class="nav__item">

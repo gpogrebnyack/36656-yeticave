@@ -43,7 +43,7 @@ date_default_timezone_set("Europe/Moscow");
                 break;
             }
         }
-	return $result;
-}
+        return $result;
+    }
 
 ?>

@@ -3,6 +3,8 @@ require_once 'functions.php';
 require_once 'lots-data.php';
 require_once 'cats-data.php';
 
+session_start();
+
 $lot = null;
 
 if (isset($_GET['id'])) {
