@@ -1,3 +1,10 @@
+<?php
+if(!isset($_SESSION)) {
+    session_start();
+}
+//print_r($_SESSION['user']);
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -22,12 +29,15 @@
 
         <nav class="user-menu">
         <!-- здесь PHP код для показа аватара пользователя -->
-        <?php if ($is_auth == true): ?>
+        <?php if (isset($_SESSION['user'])): ?>
             <div class="user-menu__image">
-                <img src="<?=$user_avatar;?>" width="40" height="40" alt="Пользователь">
+                <img src="#" width="40" height="40" alt="Пользователь">
             </div>
             <div class="user-menu__logged">
-                <p><?=$user_name;?></p>
+                <p><?=$_SESSION['user']['name'];?>
+                <br/>
+                <a href="logout.php">Выход</a>
+                </p>
             </div>
         <?php else: ?>
             <ul class="user-menu__list">

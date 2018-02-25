@@ -3,7 +3,6 @@
 require_once 'functions.php';
 require_once 'lots-data.php';
 require_once 'cats-data.php';
-require_once 'login-data.php';
 require_once 'userdata.php';
 
 session_start();
@@ -20,24 +19,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // Проверка на ожидаемый формат
-    if (!filter_var($form['email'], FILTER_VALIDATE_EMAIL) and !empty($form['email'])) {
+    if (!empty($form['email'])) {
+        // Проверка на ожидаемый формат
+        if (!filter_var($form['email'], FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = 'Введите корректный email';
+        } else {
+            // Аутентификация
+            if (!count($errors) and $user = searchUserByEmail($users, $form['email'])) {
+                if (password_verify($form['password'], $user['password'])) {
+                    $_SESSION['user'] = $user;
+                }
+                else {
+                    $errors['password'] = 'Вы ввели неверный пароль';
+                }
+            } else {
+                $errors['email'] = 'Такой пользователь не найден';
+            }
+        }
     }
-
-    // Аутентификация
-    if (!count($errors) and $user = searchUserByEmail($form['email'], $users)) {
-        if (password_verify($form['password'], $user['password'])) {
-			$_SESSION['user'] = $user;
-        }
-        else {
-			$errors['password'] = 'Вы ввели неверный пароль';
-		}
-    } else {
-        if (filter_var($form['email'], FILTER_VALIDATE_EMAIL) and !empty($form['email'])) {
-            $errors['email'] = 'Такой пользователь не найден';
-        }
-	}
     
     // Вывод ошибок
     if (count($errors)) {
@@ -59,9 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $layout_content = render('templates/layout.php', [
     'title' => 'Вход на сайт',
-    'user_name' => $user_name,
-    'is_auth' => $is_auth,
-    'user_avatar' => $user_avatar,
     'content' => $page_content,
     'cat' => $cat
 ]);
