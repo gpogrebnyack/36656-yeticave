@@ -4,9 +4,7 @@ require_once 'functions.php';
 require_once 'lots-data.php';
 require_once 'cats-data.php';
 
-if (!isset($_SESSION)) {
-    session_start();
-}
+session_start();
 
 $page_content = render('templates/index.php', [
     'lots' => $lots,
