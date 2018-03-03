@@ -28,6 +28,9 @@ CREATE TABLE lots (
     FOREIGN KEY (winner_id) REFERENCES users(id)
 );
 
+CREATE INDEX l_name ON lots(name);
+CREATE INDEX l_cat ON lots(category_id);
+
 CREATE TABLE rates (
     id INT AUTO_INCREMENT PRIMARY KEY, 
     rate_date DATETIME,
@@ -49,3 +52,4 @@ CREATE TABLE users (
 );
 
 CREATE UNIQUE INDEX email ON users(email);
+CREATE INDEX u_email ON users(email);
