@@ -6,58 +6,46 @@ USE yeticave;
 
 CREATE TABLE categories ( 
     id INT AUTO_INCREMENT PRIMARY KEY,  
-    category CHAR(128)
+    name CHAR(128)
 );
 
-INSERT INTO categories
-SET category = 'Доски и лыжи';
-INSERT INTO categories
-SET category = 'Крепления'; 
-INSERT INTO categories
-SET category = 'Ботинки';
-INSERT INTO categories
-SET category = 'Одежда';
-INSERT INTO categories
-SET category = 'Инструменты';
-INSERT INTO categories
-SET category = 'Разное';
-
-CREATE INDEX c_text ON categories(category);
+INSERT INTO categories(name) VALUES ('Доски и лыжи'), ('Крепления'), ('Ботинки'), ('Одежда'), ('Инструменты'), ('Разное');
 
 CREATE TABLE lots ( 
     id INT AUTO_INCREMENT PRIMARY KEY,  
     date_create DATETIME,
-    catgory categories_id
+    category_id INT,
     name CHAR(128),
-    about TEXT,
+    description TEXT,
     img CHAR(128),
     price_start DECIMAL,
     date_finish DATE,
     price_step INT,
-    author users_id,
-    winner users_id
+    author_id INT,
+    winner_id INT,
+    FOREIGN KEY (category_id) REFERENCES categories(id),
+    FOREIGN KEY (author_id) REFERENCES users(id),
+    FOREIGN KEY (winner_id) REFERENCES users(id)
 );
-
-CREATE INDEX c_text ON lots(name);
 
 CREATE TABLE rates (
     id INT AUTO_INCREMENT PRIMARY KEY, 
     rate_date DATETIME,
     rate_price DECIMAL,
-    lot lots_id,
-    user users_id
+    lot_id INT,
+    user_id INT
+    FOREIGN KEY (lot_id) REFERENCES lots(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 CREATE TABLE users ( 
     id INT AUTO_INCREMENT PRIMARY KEY,
-    registration DATETIME,
+    registration_date DATETIME,
     email CHAR(128),
     name CHAR(128),
     password CHAR(64),
     avatar CHAR(128),
-    contacts TEXT,
-    lots lots_id,
-    rates rates_id
+    contacts TEXT
 );
 
 CREATE UNIQUE INDEX email ON users(email);
