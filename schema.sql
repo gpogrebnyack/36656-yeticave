@@ -9,7 +9,18 @@ CREATE TABLE categories (
     name CHAR(128)
 );
 
-INSERT INTO categories(name) VALUES ('Доски и лыжи'), ('Крепления'), ('Ботинки'), ('Одежда'), ('Инструменты'), ('Разное');
+CREATE TABLE users ( 
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    registration_date DATETIME,
+    email CHAR(128),
+    name CHAR(128),
+    password CHAR(64),
+    avatar CHAR(128),
+    contacts TEXT
+);
+
+CREATE UNIQUE INDEX email ON users(email);
+CREATE INDEX u_email ON users(email);
 
 CREATE TABLE lots ( 
     id INT AUTO_INCREMENT PRIMARY KEY,  
@@ -36,20 +47,7 @@ CREATE TABLE rates (
     rate_date DATETIME,
     rate_price DECIMAL,
     lot_id INT,
-    user_id INT
+    user_id INT,
     FOREIGN KEY (lot_id) REFERENCES lots(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
-
-CREATE TABLE users ( 
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    registration_date DATETIME,
-    email CHAR(128),
-    name CHAR(128),
-    password CHAR(64),
-    avatar CHAR(128),
-    contacts TEXT
-);
-
-CREATE UNIQUE INDEX email ON users(email);
-CREATE INDEX u_email ON users(email);
